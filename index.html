@@ -1,0 +1,539 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta name="theme-color" content="#281c32">
+  <meta name="description" content="A little birthday world made with love for Madam Ji.">
+  <title>A Little World for Madam Ji ♡</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=DM+Sans:wght@400;500;600;700&family=Caveat:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;1,500&display=swap" rel="stylesheet">
+</head>
+
+<body>
+<div id="app">
+
+  <!-- =====================================
+       1. ORIENTATION MESSAGE
+  ====================================== -->
+
+  <div id="orientation-screen" class="orientation-screen hidden">
+    <div class="orientation-card">
+      <div class="orientation-icon">📱 ↻</div>
+      <h2>One tiny request, Madam Ji!</h2>
+      <p>This little world is best experienced sideways. Please rotate your phone.</p>
+      <span>♡ Thank you! ♡</span>
+    </div>
+  </div>
+
+
+  <!-- =====================================
+       2. START SCREEN
+  ====================================== -->
+
+  <section id="start-screen" class="scene active">
+    <div class="pixel-stars"></div>
+
+    <div class="start-content">
+
+      <div class="start-hearts">
+        <span>♥</span>
+        <span>♥</span>
+        <span>♥</span>
+        <span>♥</span>
+        <span>♥</span>
+      </div>
+
+      <div class="start-title">
+        <span class="small-title">A VERY SPECIAL WORLD</span>
+        <h1>For Madam Ji</h1>
+        <p>made with a little too much love ♡</p>
+      </div>
+
+      <div class="sleeping-character">
+        <img
+          class="sleeping-character-image"
+          src="assets/poses/idle.png"
+          alt="Sleeping Chutku"
+        >
+        <span class="sleeping-name">CHUTKU</span>
+        <span class="zzz">z z Z</span>
+      </div>
+
+      <div class="heart-charger">
+        <div id="heart-container" class="heart-container"></div>
+        <p>Sending little hearts to wake someone up...</p>
+      </div>
+
+      <button id="summon-button" class="pixel-button">
+        SUMMON CHUTKU ♡
+      </button>
+
+      <p class="start-footnote">Best experienced in landscape mode</p>
+
+    </div>
+  </section>
+
+
+  <!-- =====================================
+       3. CHUTKU INTRODUCTION / PASSWORD
+  ====================================== -->
+
+  <section id="intro-screen" class="scene hidden">
+    <div class="game-background">
+
+      <div class="game-sky">
+        <span>✦</span>
+        <span>♡</span>
+        <span>✧</span>
+        <span>♥</span>
+        <span>✦</span>
+      </div>
+
+      <div class="game-ground"></div>
+
+      <div class="intro-character-area">
+
+        <div id="chutku-character" class="chutku-placeholder">
+          <span id="chutku-face"><img src="assets/poses/idle.png" alt="Chutku"></span>
+          <span class="character-label">CHUTKU</span>
+        </div>
+
+        <div class="dialogue-bubble">
+          <span class="dialogue-name">CHUTKU ♡</span>
+          <p id="dialogue-text"></p>
+          <span id="dialogue-cursor">▼</span>
+        </div>
+
+      </div>
+
+      <div id="password-area" class="password-area hidden">
+
+        <label for="password-input">ENTER THE SECRET CODE</label>
+
+        <p class="password-hint">
+          Hint: The nickname my creator calls you.
+        </p>
+
+        <div class="password-input-row">
+          <input
+            id="password-input"
+            type="text"
+            placeholder="Your secret code..."
+            autocomplete="off"
+            autocapitalize="none"
+            spellcheck="false"
+          >
+
+          <button id="password-button" class="pixel-button">
+            ENTER
+          </button>
+        </div>
+
+        <p id="password-error" class="password-error"></p>
+
+      </div>
+
+      <div id="intro-continue" class="intro-continue hidden">
+        <button id="continue-button" class="pixel-button">
+          LET'S GO ♡
+        </button>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- =====================================
+       4. SCRAPBOOK
+  ====================================== -->
+
+  <section id="scrapbook-screen" class="scene scrapbook-scene hidden">
+
+    <div class="scrapbook-background">
+
+      <div class="desk-decoration decoration-one">✿</div>
+      <div class="desk-decoration decoration-two">♡</div>
+      <div class="desk-decoration decoration-three">୨୧</div>
+
+      <div class="scrapbook-heading">
+        <span>MADE WITH LOVE, JUST FOR YOU</span>
+        <p>A little book of little moments ♡</p>
+      </div>
+
+      <div class="book-stage">
+
+        <button
+          id="previous-page"
+          class="book-arrow previous-arrow"
+          aria-label="Previous page"
+        >‹</button>
+
+        <div id="book-container" class="book-container">
+          <div id="scrapbook-book" class="scrapbook-book">
+            <!-- Pages generated dynamically by scrapbook.js -->
+          </div>
+        </div>
+
+        <button
+          id="next-page"
+          class="book-arrow next-arrow"
+          aria-label="Next page"
+        >›</button>
+
+      </div>
+
+      <div class="book-controls">
+        <span id="book-page-label">THE BEGINNING ♡</span>
+        <span class="book-hint">Swipe or use the arrows to turn pages</span>
+      </div>
+
+      <div id="book-finish" class="book-finish hidden">
+
+        <div class="finish-card">
+
+          <span class="finish-decoration">୨୧</span>
+
+          <h2>And that's our little book.</h2>
+
+          <p>
+            I hope you enjoyed reading it
+            as much as I enjoyed making it.
+          </p>
+
+          <div class="finish-buttons">
+
+            <button id="reread-book" class="pixel-button secondary-button">
+              READ IT AGAIN ♡
+            </button>
+
+            <button id="return-book" class="pixel-button">
+              GIVE THE BOOK BACK
+            </button>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- =====================================
+       5. HANDWRITTEN LETTER
+  ====================================== -->
+
+  <section id="letter-screen" class="scene letter-scene hidden">
+
+    <div class="letter-background">
+
+      <div class="letter-decoration letter-decoration-one">✿</div>
+      <div class="letter-decoration letter-decoration-two">♡</div>
+      <div class="letter-decoration letter-decoration-three">୨୧</div>
+
+      <div class="letter-introduction">
+
+        <div class="letter-chutku">
+          <span id="letter-chutku-face"><img src="assets/poses/idle.png" alt="Chutku"></span>
+          <small>CHUTKU</small>
+        </div>
+
+        <div class="letter-dialogue">
+          <span>CHUTKU ♡</span>
+          <p id="letter-dialogue-text"></p>
+
+          <button id="take-letter-button" class="pixel-button hidden">
+            TAKE THE LETTER ♡
+          </button>
+        </div>
+
+      </div>
+
+      <!-- ENVELOPE -->
+
+      <div id="envelope-area" class="envelope-area hidden">
+
+        <div class="letter-instruction">
+          A little something from Dhruv ♡
+        </div>
+
+        <div id="envelope" class="envelope">
+
+          <div class="envelope-back"></div>
+          <div class="envelope-letter-preview">
+            <span>For Madam Ji</span>
+            <small>with love ♡</small>
+          </div>
+
+          <div class="envelope-front"></div>
+          <div class="envelope-flap"></div>
+
+          <button
+            id="envelope-seal"
+            class="envelope-seal"
+            aria-label="Open the envelope"
+          >♡</button>
+
+        </div>
+
+        <p class="seal-instruction">
+          Psst... click the little heart to open it!
+        </p>
+
+      </div>
+
+
+      <!-- LETTER DISPLAY -->
+
+      <div id="letter-display" class="letter-display hidden">
+
+        <div class="letter-paper-frame">
+
+          <div class="letter-paper-heading">
+            A LETTER FOR YOU ♡
+          </div>
+
+          <button
+            id="zoom-letter-button"
+            class="zoom-letter-button"
+            aria-label="Zoom into letter"
+          >
+
+            <img
+              id="handwritten-letter-image"
+              src="assets/letter/letter1.png"
+              alt="A handwritten letter for Madam Ji"
+            >
+
+            <span class="zoom-hint">TAP TO READ CLOSER ↗</span>
+
+          </button>
+
+          <p class="letter-paper-footer">
+            Written with love, Dhruv ♡
+          </p>
+
+        </div>
+
+        <button
+          id="return-letter-button"
+          class="pixel-button return-letter-button"
+        >
+          GIVE THE LETTER BACK
+        </button>
+
+      </div>
+
+
+      <!-- LETTER ZOOM OVERLAY -->
+
+      <div id="letter-zoom-overlay" class="letter-zoom-overlay hidden">
+
+        <button
+          id="close-letter-zoom"
+          class="close-letter-zoom"
+          aria-label="Close zoom"
+        >✕</button>
+
+        <img
+          id="zoomed-letter-image"
+          src="assets/letter/letter1.png"
+          alt="Zoomed handwritten letter"
+        >
+
+        <p>Tap outside the letter to close ♡</p>
+
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- =====================================
+       6. BIRTHDAY CAKE SEQUENCE
+  ====================================== -->
+
+  <section id="cake-screen" class="scene cake-scene hidden">
+
+    <!-- BIRTHDAY CAKE -->
+
+    <div id="cake-birthday" class="cake-stage">
+
+      <div id="cake-confetti" class="cake-confetti" aria-hidden="true"></div>
+
+      <div class="cake-dialogue">
+        <p id="cake-dialogue-text">
+          Madam Ji! I have something special for you...
+        </p>
+      </div>
+
+      <div class="cake-illustration">
+
+        <div class="cake-sparkles">✦　·　✧　·　✦</div>
+
+        <div id="cake-candles" class="cake-candles"></div>
+
+        <div class="cake-top"></div>
+        <div class="cake-icing"></div>
+
+        <div class="cake-body">
+          <div class="cake-layer"></div>
+          <div class="cake-drips">♡　✦　♡　✦　♡</div>
+        </div>
+
+        <div class="cake-plate"></div>
+        <div class="cake-strawberries">🍓　🍓　🍓</div>
+        <div class="cake-chocolate">WHITE CHOCOLATE</div>
+
+      </div>
+
+      <div class="cake-chutku-bottom">
+        <img id="cake-chutku-bottom-image" src="assets/poses/happy.png" alt="Chutku">
+        <span>CHUTKU</span>
+      </div>
+
+      <div class="cake-actions">
+
+        <button id="wish-button" class="pixel-button game-button">
+          MAKE A WISH ♡
+        </button>
+
+        <button id="blow-button" class="pixel-button game-button hidden">
+          BLOW THE CANDLES
+        </button>
+
+        <button id="fan-button" class="pixel-button game-button hidden">
+          🪭 USE THE FAN
+        </button>
+
+        <button id="blow-again-button" class="pixel-button game-button hidden">
+          BLOW AGAIN ♡
+        </button>
+
+      </div>
+
+      <audio
+        id="birthday-music"
+        loop
+        preload="auto"
+      ></audio>
+
+    </div>
+
+
+    <!-- LIGHTS OUT -->
+
+    <div id="final-darkness" class="final-darkness hidden">
+
+      <h2 class="darkness-title">Oops! Lights out ♡</h2>
+
+      <img
+        id="box-chutku"
+        class="box-chutku"
+        src="assets/poses/carrying-box.png"
+        alt="Chutku carrying a box"
+      >
+
+      <p id="darkness-dialogue">
+        I am sorry, I was bringing some stuff!
+      </p>
+
+      <button id="lights-button" class="pixel-button game-button">
+        TURN ON THE LIGHTS ✦
+      </button>
+
+    </div>
+
+
+    <!-- FINAL SURPRISE -->
+
+    <div id="final-surprise" class="final-surprise hidden">
+
+      <h2>One last thing, Madam Ji ♡</h2>
+
+      <div class="final-memory-panels">
+
+        <div class="final-memory-card">
+          <p>Your letter</p>
+
+          <img
+            src="assets/letter/letter1.png"
+            alt="Your handwritten letter"
+          >
+        </div>
+
+        <div class="final-memory-card">
+          <p>Us ♡</p>
+
+          <img
+            src="assets/final/us-together.jpg"
+            alt="A photograph of the two of you"
+          >
+        </div>
+
+      </div>
+
+      <img
+        id="final-chutku-face"
+        class="final-chutku-face"
+        src="assets/poses/happy.png"
+        alt="Chutku"
+      >
+
+      <p id="final-dialogue">
+        i hope you like it because ye Dhruv se toh bnai nhi gyi website maine hi bnai hai your chutku
+      </p>
+
+      <button id="hug-button" class="pixel-button game-button">
+        HUG CHUTKU ♡
+      </button>
+
+      <button id="restart-button" class="pixel-button game-button hidden">
+        START OVER ↻
+      </button>
+
+    </div>
+
+  </section>
+
+</div>
+
+
+<!-- =====================================
+     SCENE VISIBILITY COMPATIBILITY
+====================================== -->
+
+<script>
+  // The original stylesheet uses the "active" class.
+  // The newer main.js uses the "hidden" class.
+  // Keep both in sync so the original design continues working.
+
+  function syncSceneVisibility() {
+    document.querySelectorAll(".scene").forEach((scene) => {
+      const isVisible = !scene.classList.contains("hidden");
+      scene.classList.toggle("active", isVisible);
+    });
+  }
+
+  syncSceneVisibility();
+
+  const sceneObserver = new MutationObserver(syncSceneVisibility);
+
+  sceneObserver.observe(document.getElementById("app"), {
+    subtree: true,
+    attributes: true,
+    attributeFilter: ["class"]
+  });
+</script>
+
+
+<!-- JAVASCRIPT ENTRY POINT -->
+
+<script type="module" src="/src/main.js"></script>
+
+</body>
+</html>
